@@ -15,7 +15,7 @@ MIT license.
 """
 This is a very simple CLI implementation of the SubScen class instance to debug.
 Run it in the CLI with:
-python checkclass.py
+python wpsclicheckV1.py
 Enter the data on the prompts and hit <ENTER>.
 Uncomment the last line:
 print(wps)
