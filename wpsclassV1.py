@@ -73,6 +73,7 @@ class SubScen:
         st_rng_A: the sub to target (st) range, from the A mark point.
         st_rng_B: the sub to target (st) range, from the B mark point.
         torp_time: the time in seconds that the torpedo (weapon) has run. Used for the propagation function.
+        s_time: The time elapsed, in seconds, between the two marks taken of the target.
         status: Information to the user if the torp hits the target or runs out of steam (or battery) before reaching target.
         aob: the angle on bow, from the submarine heading to the target heading. Positive values are right bow.
         impact: the angle on bow of the torpedo heading to the target heading, at the moment when the torpedo hits the target.
