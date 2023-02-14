@@ -24,7 +24,9 @@ February 9, 2023. William Shearer.
 	* The torpedo heading, realtive to north.  
 	* The realtive bearing, in relation to the longitudinal axis of the submarine, that the torpedo will fire on.  
 
-
+#### TODO  
+Installation  
+Detailed usage  
 
 
 Please report bugs to GitHub user:  
