@@ -36,10 +36,10 @@ wps.get_sub["spd"] = float(input("Sub speed: "))
 wps.get_state["s_time"] = float(input("Time: "))
 
 # Set the desired torp here.
-wps.set_torp("G7a-lo")
+# wps.set_torp("G7a-lo")
 # wps.set_torp("G7a-md")
 # wps.set_torp("G7a-hi")
-# wps.set_torp("G7e-st")
+wps.set_torp("G7e-st")
 # Look at the wpsclass.py file, dict _torps and function set_torp() to understand what is happening.
 
 print("Torp Spd:", wps.get_weapon["spd"])
@@ -58,4 +58,4 @@ print("Torp Hdg:", round(degrees(wps.get_weapon["hdg"]), 2))
 print("Torp Rng:", round(wps.get_state["wpn_run"], 2))
 print("Torp status:", wps.get_state["status"])
 print("Impact:", round(degrees(wps.get_state["impact"]), 2))
-print(wps)
+# print(wps)

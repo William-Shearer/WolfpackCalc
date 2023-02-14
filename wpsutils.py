@@ -59,6 +59,50 @@ def aob_calc(brg, hdg):
         aob += (pi * 2)
     return aob
 
+
+def gyro_angle(brg, hdg):
+    """
+    Takes a bearing and a heading a returns a relative bearing.
+    Where aob needs negative left, positive right, this should be a relative bearing on 360 degrees (pi * 2).
+    Small difference...
+    """
+    ga = brg - hdg
+    if ga < 0.0:
+        ga += (pi * 2)
+    elif ga >= (pi * 2):
+        ga -= (pi * 2)
+    return ga
+
+
+def convert_to_ms(kt):
+    # Converts knots to meters per second
+    return kt / 1.944
+    
+
+def convert_to_kt(ms):
+    # Converts meters per second to knots.
+    return ms * 1.944
+    
+
+def convert_to_meters(hm):
+    # Converts hecto-meters to meters.
+    return hm * 100
+    
+
+def convert_to_hm(m):
+    # Converts meters to hecto-meters.
+    return m / 100
+
+
+def gen_min_conv(sec):
+    # Returns string minutes formatted 0:00
+    try:
+        fsec = float(sec)
+    except ValueError:
+        return "0"
+    dec_mins = fsec / 60.0
+    return f"{int(dec_mins)}:{round((dec_mins - int(dec_mins)) * 60):02}"
+    
 """
 Lambda function, all it does is Pythagoras, to calculate a range from given coordinates.
 """

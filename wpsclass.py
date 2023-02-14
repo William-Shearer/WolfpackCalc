@@ -1,5 +1,5 @@
 from math import cos, sin
-from wpsutils import atan2f, Fn_Rng, aob_calc, invert
+from wpsutils import atan2f, Fn_Rng, aob_calc, invert, gyro_angle
 
 """
 SubSig V.1.0
@@ -79,6 +79,7 @@ class SubScen:
         impact: the angle on bow of the torpedo heading to the target heading, at the moment when the torpedo hits the target.
         wt_rng: the range in meters from the torpedo (weapon) to the target (wt). Used during propagation.
         wpn_run: the distance the weapon has travelled. Propagated second by second, at the weapon's spd in meters/second.
+        gyro_angle: the torpedo heading converted to relative bearing referencing sub bow.
         """
         self._state =   {   "st_brg_A": 0.0,
                             "st_brg_B": 0.0,
@@ -90,7 +91,8 @@ class SubScen:
                             "aob": 0.0,
                             "impact": 0.0,
                             "wt_rng": 0.0,
-                            "wpn_run": 0.0      }
+                            "wpn_run": 0.0,
+                            "gyro_angle": 0.0   }
                             
         """
         These are the basic stats for the torpedoes used in Wolfpack.
@@ -246,12 +248,15 @@ class SubScen:
             y_dist = self._target["pgt_y"] - self._weapon["ny"]
             self._state["wt_rng"] = Fn_Rng(x_dist, y_dist)
             self._state["wpn_run"] += self._weapon["spd"]
+            self._state["gyro_angle"] = gyro_angle(self._weapon["hdg"], self._sub["hdg"])
             
             if (self._state["wt_rng"] <= self._weapon["spd"]):
-                self._state["status"] = "In Range"
+                self._state["status"] = "IN RANGE"
                 self._state["impact"] = aob_calc(invert(self._weapon["hdg"]), self._target["hdg"])
                 break
             if (self._state["wpn_run"] > self._weapon["max_rng"]):
-                self._state["status"] = "Out of Range"
+                self._state["status"] = "OUT OF RANGE"
                 self._state["impact"] = 0.0
                 break
+
+    
