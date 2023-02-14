@@ -27,7 +27,6 @@ February 9, 2023. William Shearer.
 
 
 
-misanthropus_ornatus@live.com  
 Please report bugs to GitHub user:  
 William-Shearer  
 MIT license.  
